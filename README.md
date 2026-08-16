@@ -2,6 +2,8 @@
 
 **Listenote** turns meeting transcripts into clear summaries, decisions, and action items. A portfolio demo combining a Sanity-driven marketing site, an interactive AI workflow, and a CMS-powered changelog.
 
+This project demonstrates the kind of AI-enabled marketing site and CMS-backed product experience I can build for SaaS founders, agencies, and service businesses.
+
 [![Next.js](https://img.shields.io/badge/Next.js-20232A?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![Sanity](https://img.shields.io/badge/Sanity-20232A?style=for-the-badge&logo=sanity&logoColor=F97316)](https://www.sanity.io/)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
@@ -9,7 +11,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-20232A?style=for-the-badge&logo=tailwindcss&logoColor=38B2AC)](https://tailwindcss.com/)
 [![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-20232A?style=for-the-badge)](https://ui.shadcn.com/)
 
-**Live demo:** [listenote.vercel.app](https://listenote.vercel.app/)
+**Live demo:** [listenote.sonpeter.com](https://listenote.sonpeter.com)
 
 ## Overview
 
@@ -66,6 +68,10 @@ Most "AI SaaS" portfolio pieces stop at a static landing page. I wanted a demo t
 
 A single deployment serving a marketing site, an editable CMS, and a working AI feature — demonstrating ownership of a modern Next.js + headless-CMS product from schema to UI to deploy.
 
+## Why I built this
+
+I built Listenote as a portfolio project to show how I approach modern SaaS-style work: a CMS-editable marketing site, a real AI workflow, and production-minded details such as fallback handling, bot protection, and tests.
+
 ---
 
 ## Getting started
@@ -73,7 +79,7 @@ A single deployment serving a marketing site, an editable CMS, and a working AI 
 ### Prerequisites
 
 - Node.js 20+
-- [pnpm](https://pnpm.io/) (recommended) or npm
+- [pnpm](https://pnpm.io/) (recommended)
 - A Sanity project (or use the bundled seed data)
 
 ### Run locally

@@ -62,11 +62,14 @@ export default function PricingRow({
           ))}
         </div>
 
-        {footnote && (
-          <p className="mx-auto max-w-2xl text-center text-sm text-muted-foreground">
-            {footnote}
+        <div className="mx-auto flex max-w-2xl flex-col gap-2 text-center">
+          {footnote && (
+            <p className="text-sm text-muted-foreground">{footnote}</p>
+          )}
+          <p className="text-xs text-muted-foreground/80">
+            Concept pricing shown for portfolio demonstration.
           </p>
-        )}
+        </div>
       </div>
     </SectionContainer>
   );
@@ -82,7 +85,7 @@ function PricingTierCard({
   const price = tier?.price?.amount;
   const currency = tier?.price?.currency ?? "NZD";
   const billingCycle = tier?.price?.billingCycle ?? "monthly";
-  const cta = tier?.cta;
+  const cta = resolvePortfolioCta(tier?.cta);
   const hasCTA = Boolean(cta?.href);
   const buttonVariant =
     stegaClean(cta?.buttonVariant) ?? (featured ? "default" : "secondary");
@@ -185,6 +188,39 @@ function PricingTierCard({
       </div>
     </article>
   );
+}
+
+/**
+ * Portfolio safeguard: map stale external listenote.ai CTAs to in-app /
+ * contact destinations until Sanity content is re-imported from seed.
+ */
+function resolvePortfolioCta(cta: PricingTier["cta"]) {
+  if (!cta?.href) {
+    return cta;
+  }
+
+  try {
+    const url = new URL(cta.href, "https://listenote.local");
+    if (url.hostname !== "listenote.ai") {
+      return cta;
+    }
+
+    if (url.pathname.startsWith("/contact")) {
+      return {
+        ...cta,
+        href: "mailto:hello@softblue.co.nz",
+        target: false,
+      };
+    }
+
+    return {
+      ...cta,
+      href: "/ai-demo",
+      target: false,
+    };
+  } catch {
+    return cta;
+  }
 }
 
 function statusLabel(status: PricingTier["status"]) {
